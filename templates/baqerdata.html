@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <h2>إضافة شخص جديد</h2>
+    <form method="POST"   action="/add_person">
+        <label for="first_name">الاسم الأول:</label>
+        <input type="text" name="firstname" required>
+        <label for="last_name">الاسم الأخير:</label>
+        <input type="text" name="lastname" required>
+        <button type="submit">إضافة</button>
+    </form>
+</body>
+{% endblock %}
