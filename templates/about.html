@@ -1,9 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card" style="width: 18rem;">
+<style>
+  #form2{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  }
+   #form3{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  }
+   #form4{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  }
+</style>
+<form action="/about" method="POST">
+  <div id="form2">
+  {{form.hidden_tag()}}
+  {{ form.email.label() }}
+    {{ form.email(class="form-control")}}
+    </div>
 
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
+  <div id="form3">
+  {{ form.password.label() }}
+  {{ form.password(class="form-control") }}
+      </div>
+
+   <div id="form4">
+  {{ form.submit(class="btn btn-primary") }}
+     </div>
+  </form>
+<h1>قائمة الأشخاص</h1>
+
+        {% for message in get_flashed_messages() %}
+
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+{% for user in users %}
+            <li><a href="{{ url_for('update', id=user.id) }}">{{ user.email }} </a> </li>
+         <li><a href="{{ url_for('update', id=user.id) }}">{{ user.wordtopass }}</a> </li>
+
+        {% endfor %}
 {% endblock %}

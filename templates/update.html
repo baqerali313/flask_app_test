@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  #form2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+  }
+
+  #form3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+  }
+
+  #form4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+  }
+</style>
+<form action="/update/{{ user_update.id }}" method="POST">
+  <div id="form2">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      <label for="email" class="form-label">البريد الإلكتروني</label>
+      <input type="email" class="form-control" id="email" name="email" value="{{ user_update.email }}" required>
+    </div>
+  </div>
+
+  <div id="form3">
+    <div class="mb-3">
+      <label for="new_password" class="form-label">كلمة المرور الجديدة</label>
+      <input type="password" class="form-control" id="new_password" name="new_password" required>
+    </div>
+  </div>
+
+  <div>
+    <div class="mb-3">
+      <label for="confirm_password" class="form-label">تأكيد كلمة المرور الجديدة</label>
+      <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+    </div>
+  </div>
+
+  <div id="form4">
+    <button type="submit" class="btn btn-primary">تحديث</button>
+  </div>
+</form>
+{% endblock %}
